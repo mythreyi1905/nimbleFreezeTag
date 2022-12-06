@@ -44,27 +44,39 @@ public class Game {
         System.out.println(it);
 int count = 0 ;
         while(!endGame(activePreys)){
+            System.out.println("==============================================================================================================================");
             count+=1;
+            System.out.println("Round Number : " + count);
             int itfromRow = it.getRow();
             int itfromColumn = it.getColumn();
             it.makeMove(activePreys,gridRows,gridColumns);
             board.moveRobotTo(it.getRepresentation(),itfromRow,itfromColumn,it.getRow(),it.getColumn());
+            System.out.println("Move by it: 1");
+            board.printBoard();
+            System.out.println(". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .");
             It prevMove = new It(it.getRow(), it.getColumn(),"x");
             it.makeMove(activePreys,gridRows,gridColumns);
-            board.moveRobotTo(it.getRepresentation(),itfromRow,itfromColumn,it.getRow(),it.getColumn());
+            board.moveRobotTo(it.getRepresentation(), prevMove.getRow(), prevMove.getColumn(), it.getRow(),it.getColumn());
+            System.out.println("Move by it: 2");
+            board.printBoard();
+            System.out.println(". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .");
+            System.out.println("Move by preys: ");
             for(Prey prey: activePreys){
                 int preyfromRow = prey.getRow();
                 int preyfromColumn = prey.getColumn();
                 prey.makeMove(prey,gridRows,gridColumns);
                 board.moveRobotTo(prey.getRepresentation(),preyfromRow,preyfromColumn,prey.getRow(),prey.getColumn());
             }
+            board.printBoard();
+            System.out.println(". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .");
             freezePrey(board, it,activePreys,frozenPreys);
+            freezePrey(board,prevMove,activePreys,frozenPreys);
             unfreezePrey(board, activePreys,frozenPreys);
             board.printBoard();
-            System.out.println("==============================================================================================================================");
+            //System.out.println("==============================================================================================================================");
 
         }
-        System.out.println("============================================GAME OVER======================================");
+        System.out.println("============================================GAME OVER===========================================================================");
         System.out.println(count);
 
 
@@ -76,12 +88,13 @@ int count = 0 ;
             if(prey.getRow()==it.getRow() && prey.getColumn()==it.getColumn()){
             activePreys.remove(prey);
             frozenPreys.add(prey);
+            System.out.println("it is freezing " + prey.getRepresentation() +" DIE DIE DIE DIE DIE ");
             board.removeFromBoard(prey.getRepresentation(),prey.getRow(),prey.getColumn());
             }
         }
     }
 
-//    public void checkPreviousFreeze()
+
 
     public void unfreezePrey(Board board, ArrayList<Prey> activePreys, ArrayList<Prey> frozenPreys){
         ArrayList<Prey> activePreysClone = (ArrayList)activePreys.clone();
@@ -91,6 +104,7 @@ int count = 0 ;
                 if(prey1.getRow()==prey2.getRow() && prey1.getColumn()==prey2.getColumn()){
                     frozenPreys.remove(prey2);
                     activePreys.add(prey2);
+                    System.out.println(prey1.getRepresentation() +" is unfreezing " + prey2.getRepresentation() + " LIVE LIVE LIVE LIVE LIVE ");
                     board.addToBoard(prey2.getRepresentation(),prey2.getRow(),prey2.getColumn());
                 }
             }
@@ -105,8 +119,5 @@ int count = 0 ;
             return false;
         }
     }
-
-
-
 
 }
