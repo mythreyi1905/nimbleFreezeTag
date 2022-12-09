@@ -10,10 +10,10 @@ prey_starting_locations:
     y: 2
   - x: 7
     y: 2
-  - x: 7
-    y: 6
-  - x: 1
-    y: 8
+#  - x: 7
+#    y: 6
+#  - x: 1
+#    y: 8
 #  - x: 9
 #    y: 9
 #  - x: 1

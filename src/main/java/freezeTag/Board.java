@@ -41,56 +41,6 @@ public class Board {
         }
     }
 
-
-
-
-//    public void printBoard(){
-//        // for every cell, we place the elements in that cell followed by padding to ensure we have all the cells the same size as the
-//        // maxElems value
-//
-//        // Iterate over each row of the board
-//        for(List<List<String>> row : board){
-//            // place a | at start of each row
-//            System.out.print("|");
-//            // Iterating through each column
-//            for(List<String> cell : row){
-//
-//                // we need to print the elements in this cell with appropriate padding
-//                // we know that max elements is maxElems
-//                // so let's find teh number of elements in this cell,
-//                // print those elements and then remaining places we pad it with a space
-//                int numElems = cell.size();
-//
-//                // printing the elements in the cell
-//                for(String elem : cell){
-//                    System.out.print(elem + " ");
-//                }
-//
-//                int remaining = maxElems - numElems;
-//
-//                if(remaining > 0){
-//                    // fill remaining space with paddding
-//                    System.out.print(" ");
-//                }
-//
-//                // end each cell with a |
-//                System.out.print(" |");
-//            }
-//
-//
-//            // at the end print a line
-//            System.out.println();
-//
-//        }
-//
-//    }
-
-
-
-
-
-
-
     /**
      * This method takes in the id and appends it to the list of existing objects
      * in the location, {i,j}

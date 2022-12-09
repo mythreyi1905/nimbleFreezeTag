@@ -45,9 +45,5 @@ public abstract class Robot {
     }
 
 
-
-    //extends it, prey
-    //movefunctions
-
 }
 

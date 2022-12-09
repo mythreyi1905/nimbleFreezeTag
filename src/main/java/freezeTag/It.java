@@ -27,11 +27,12 @@ public class It extends Robot {
         }
 
 
-        //if it is one cell away from prey
+        //if it is one cell away from prey, then predictively move towards where the prey might take the next move
         if (isPreyOneAway(targetPrey))
         {
             makeMoveOneAway(targetPrey, boardRowSize, boardColumnSize);
         }
+        //else make a move and gravitate towards the prey
         else{
             //if targetPrey is on the same row
             if (this.getRow() == targetPrey.getRow()) {
@@ -93,9 +94,9 @@ public class It extends Robot {
 
 
     public void makeMoveOneAway(Robot prey, int boardRowSize, int boardColumnSize) {
-        //loop through the arraylist and randomly generate a number between 1-4
+        //loop through the arraylist and randomly generate a number between 1-8 to denote possible movement directions for targetPrey
         //print the generated number's
-//        for (Prey prey: activePreys){
+
         ArrayList<Integer> possibleDirections = new ArrayList<>();
         //down -1, up -2 , left-3, right-4 , topRight-5, topLeft -6, bottomRight - 7, bottomLeft -8
         if(this.getRow()<boardRowSize-1 && !(prey.getRow()==this.getRow()+1 && prey.getColumn()==this.getColumn())){
@@ -161,7 +162,7 @@ public class It extends Robot {
                 this.setRow(this.getRow()+1);
                 break;
         }
-        //}
+
     }
 
 

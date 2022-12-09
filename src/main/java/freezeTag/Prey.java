@@ -10,9 +10,9 @@ public class Prey extends Robot{
 
 
     public void makeMove(Prey prey, int boardRowSize, int boardColumnSize) {
-        //loop through the arraylist and randomly generate a number between 1-4
+        //loop through the arraylist and randomly generate a number between 1-4 so the prey can pick a possible direction to move to
         //print the generated number's
-//        for (Prey prey: activePreys){
+
             ArrayList<Integer> possibleDirections = new ArrayList<>();
             //down -1, up -2 , left-3, right-4
             if(prey.getRow()<boardRowSize-1){
@@ -43,6 +43,6 @@ public class Prey extends Robot{
                    prey.setColumn(prey.getColumn()+1);
                    break;
            }
-        //}
+
     }
 }
